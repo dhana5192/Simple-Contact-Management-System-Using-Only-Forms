@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Management System</title>
+    </head>
+
+    <body>
+
+    {% for message in messages %}
+        <div style="padding-bottom: 15px">{{ message }} </div>
+    {% endfor %}
+
+    {% if contacts %}
+        <table style="width:75%;">
+            <tr>
+                <th>Name</th>
+                <th>Mobile</th>
+                <th>Alternative Mobile No</th>
+                <th>Email</th>
+            </tr>
+            {% for contact in contacts %}
+            <tr>
+                <td style="text-align: center">{{ contact.name }}</td>
+                <td style="text-align: center">{{ contact.mobile_no }}</td>
+                <td style="text-align: center">{{ contact.alt_mobile_no }}</td>
+                <td style="text-align: center">{{ contact.email }}</td>
+                <td style="text-align: center"><form action="{% url 'contact_delete' contact.id %}"><input type="submit" value="Delete">
+                </form></td>
+                <td style="text-align: center"><form action="{% url 'contact_edit' contact.id %}">
+                    <input type="submit" value="Edit"></form></td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% else  %}
+        <h2>No Contacts To Display</h2>
+        <div style="text-align: left; padding-top: 20px"><a href="{% url 'add_contact' %}">Click Here To Add contacts</a></div>
+    {% endif %}
+    </body>
+</html>

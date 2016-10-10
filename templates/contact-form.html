@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Management System</title>
+    </head>
+
+    <body>
+        <div style="color: #32cba9">Add your contact here</div>
+
+        <form role="form" action="" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Submit</button>
+        </form>
+
+        <div style="text-align: left; padding-top: 30px"><a href="{% url 'contact_list' %}">Click Here To View & Manage Contacts</a></div>
+    </body>
+</html>
